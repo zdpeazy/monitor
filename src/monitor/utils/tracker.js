@@ -4,7 +4,6 @@ let logStore = 'monitor-store';
 let userAgent = require('user-agent');
 
 function getExtraData(){
-  console.log(navigator.userAgent)
   return {
     title: document.title,
     url: location.href,
