@@ -1,3 +1,6 @@
+/**
+ * 监控js错误 
+ */
 import getLastEvent from '../utils/getLastEvent';
 import getSelector from '../utils/getSelector';
 import tracker from '../utils/tracker';
@@ -6,6 +9,7 @@ export function injectJsError(){
   // 监听全局未捕获的错误
   window.addEventListener('error', event => { // 错误时间对象
     console.log(event)
+    let lastEvent = getLastEvent(); //获取最后一个交互事件
     // 这是一个脚本加载错误
     if(event.target && (event.target.src || event.target.href)){
       tracker.send({

@@ -19,6 +19,17 @@ module.exports = {
   devServer: {
     contentBase: path.resolve(__dirname, './dist'),
     open: true,
-    port: 9000
+    port: 9000,
+    // before用来配置路由 express服务器
+    before(router){
+      router.get('/success', function(req, res){
+        // console.log(req)
+        res.json({id: 1})
+      })
+      router.post('/error', function(req, res){
+        // console.log(req)
+        res.sendStatus(500)
+      })
+    }
   }
 }
