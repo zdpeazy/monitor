@@ -15,47 +15,24 @@
 <body>
   <div id="container">
     <div class="content">
-      <input id="successBtn" type="button" value="ajax成功请求" onclick="sendSuccess()">
-      <input id="errorBtn" type="button" value="ajax错误请求" onclick="sendError()">
+      <!-- <input id="successBtn" type="button" value="ajax成功请求" onclick="sendSuccess()">
+      <input id="errorBtn" type="button" value="ajax错误请求" onclick="sendError()"> -->
+      <!-- <p style="width: 400px;height: 400px;">21312</p> -->
     </div>
   </div>
   <script>
-    function sendSuccess(){
-      const xhr = new XMLHttpRequest();
-      xhr.open('GET', '/success', true);
-      xhr.responseType = 'json'
-      xhr.onload = function(){
-        console.log(xhr.response);
+    setTimeout(() => {
+      let content = document.getElementsByClassName('content')[0];
+      let h1 = document.createElement('h1');
+      h1.innerHTML = '我是页面中最有意义的内容';
+      h1.setAttribute('elementtiming', 'meaningful')
+      content.append(h1);
+      for(let i = 1; i < 10; i ++){
+        let p = document.createElement('p');
+        p.innerHTML = '点我';
+        content.append(p)
       }
-
-      xhr.send();
-    }
-    
-
-    function sendError(){
-      const xhr = new XMLHttpRequest();
-      xhr.open('POST', '/error', true);
-      xhr.responseType = 'json'
-      xhr.onload = function(){
-        console.log(xhr.response);
-      }
-
-      xhr.onerror = function(error){
-        console.log(xhr.error)
-      }
-
-      xhr.send('name=lisi');
-    }
-    // function errorClick(){
-    //   window.someVar.error = 'error'
-    // }
-
-    // function promiseErrorClick(){
-    //   new Promise((resolve, reject) => {
-    //     window.someVar.promiseError = 'promiseError'
-    //   })
-    // }
+    }, 2000)
   </script>
-  <!-- <script type="text/javascript" src="./someError.js"></script> -->
 </body>
 </html>
